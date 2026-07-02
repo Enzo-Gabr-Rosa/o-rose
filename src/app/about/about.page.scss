@@ -1,0 +1,588 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESETS
+   ========================================================================== */
+
+* {
+  color: var(--wild-sand);
+  font-family: "Inter", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ion-content {
+  --background: #0A0A0A;
+  --background: linear-gradient(20deg, rgba(5, 5, 5, 1) 0%, rgba(5, 5, 5, 1) 70%, rgba(37, 91, 125, 0.3) 110%);
+}
+
+/* ==========================================================================
+   2. BARRA DE NAVEGAÇÃO (NAVBAR ORIGINAL)
+   ========================================================================== */
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 3vh;
+  height: 8vh;
+  padding: 2vw;
+
+  width: 82vw;
+  min-width: 1200px;
+  margin: 3vh auto;
+
+  border: 2px var(--cod-gray) solid;
+  border-radius: 100vw;
+  background: rgba(var(--cod-gray-rgb), 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.logo-nav {
+  font-weight: bold;
+  display: flex;
+  gap: 1vw;
+  align-items: center;
+}
+
+.menu-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2vw;
+}
+
+.menu-nav a {
+  cursor: pointer;
+}
+
+.link {
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+.link.ativo {
+  opacity: 1;
+}
+
+.link-orcamento {
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.6vh 1vw;
+  border-radius: 33554400px;
+  background: linear-gradient(107deg, var(--christalle) 0%, var(--dodger-blue) 100%);
+}
+
+/* ==========================================================================
+   ELEMENTOS DE SUPORTE AO MOBILE (CONVENÇÃO DE FLUXO GLOBAL)
+   ========================================================================== */
+
+.mobile-only {
+  display: none !important;
+}
+
+.botao-menu-mobile {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-menu-mobile ion-icon {
+  font-size: 28px;
+  color: var(--wild-sand);
+}
+
+.menu-suspenso-mobile {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-suspenso-mobile.aberto {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   REGRAS ADAPTATIVAS PARA RETRATO (PORTRAIT)
+   ========================================================================== */
+
+@media (orientation: portrait) {
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: flex !important;
+  }
+  
+  .nav-bar {
+    width: 90vw;
+    min-width: 0;
+    margin: 2vh auto;
+    height: 60px;
+    padding: 0 16px;
+    position: fixed;
+    overflow: visible !important; 
+  }
+
+  .menu-suspenso-mobile {
+    position: fixed;            
+    top: 10vh;                   
+    left: 5vw;                  
+    width: 90vw;                
+    z-index: 200;               
+
+    border: 2px var(--cod-gray) solid;
+    border-radius: 24px;
+    background: rgba(var(--cod-gray-rgb), 0.4); 
+    backdrop-filter: blur(6px);                 
+    -webkit-backdrop-filter: blur(12px);
+    
+    padding: 24px 28px;
+  }
+
+  .links-menu-suspenso {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;                 
+    text-align: left;
+  }
+
+  .links-menu-suspenso a {
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 0.5;              
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    color: var(--wild-sand);
+  }
+
+  .links-menu-suspenso a.ativo {
+    opacity: 1;
+    font-weight: 600;
+  }
+}
+
+/* ==========================================================================
+   8. SEÇÃO SOBRE O FUNDADOR (PÁGINA SOBRE)
+   ========================================================================== */
+
+.secao-principal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  align-items: center;
+  gap: 6vw;                 
+  width: 82vw;              
+  max-width: 1400px;        
+  margin: 18vh auto 6vh auto; 
+}
+
+.foto-dono {
+  position: relative;
+  width: 100%;
+  max-width: 460px;         
+  justify-self: end;        
+}
+
+.foto-dono img {
+  border-radius: 24px;
+  width: 100%;
+  display: block;
+}
+
+.nome-funcao {
+  position: absolute;
+  bottom: 24px;             
+  right: -30px;             
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px var(--cod-gray) solid; 
+  border-radius: 16px;
+  padding: 16px 24px;
+  width: auto;              
+  min-width: 200px;
+  z-index: 10;
+}
+
+.nome-funcao p {
+  font-family: sans-serif;
+  font-size: 11px;          
+  letter-spacing: 2px;
+  color: var(--dodger-blue);
+  margin-bottom: 4px;
+}
+
+.nome-funcao h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.descricao {
+  width: 100%;              
+  max-width: 600px;         
+  justify-self: start;      
+}
+
+.descricao h6 {
+  font-family: sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--dodger-blue);
+  margin-bottom: 12px;
+}
+
+.descricao h1 {
+  font-size: 3.2vw;         
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 3vh;
+}
+
+.efeito-gradiente {
+  background-image: linear-gradient(135deg, var(--christalle) 10%, var(--dodger-blue) 110%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: bold;
+}
+
+.textos {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  opacity: 0.5;             
+  text-align: left;         
+  line-height: 1.6;
+  font-size: 1.05vw;
+}
+
+.historico {
+  margin: 5vh 0 0 0;
+  display: flex;
+  justify-content: space-between; 
+  gap: 1.5vw;
+}
+
+.slot {
+  flex: 1;                  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(15, 15, 15, 0.4);
+  padding: 3vh 2vw;         
+  border: var(--cod-gray) 1px solid;
+  border-radius: 16px;
+}
+
+.slot h5 {
+  font-size: 2.2vw;         
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.slot p {
+  font-size: 0.9vw;
+  opacity: 0.6;
+}
+
+.container-botao-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 6vh 0 12vh 0;     
+}
+
+.contato {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+    gap: 8px;
+    font-size: 1.3vw;
+    padding: 2vh 1.5vw;
+    border-radius: 9999999px;
+    background: linear-gradient(135deg, var(--christalle) 10%, var(--dodger-blue) 110%);
+    border: none;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   8. SEÇÃO FOOTER
+   ========================================================================== */
+
+.footer {
+  width: 100%;
+  background-color: #050505;
+  padding: 8vh 12vw 4vh 12vw;
+  margin-top: 15vh;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4vw;
+  padding-bottom: 6vh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-coluna-logo {
+  max-width: 25vw;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  font-weight: bold;
+  font-size: 1.8vw;
+  margin-bottom: 2vh;
+}
+
+.footer-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.footer-descricao {
+  font-size: 0.95vw;
+  line-height: 1.6;
+  opacity: 0.4;
+}
+
+.footer-coluna-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+}
+
+.footer-coluna-links h4 {
+  font-size: 1vw;
+  font-weight: 600;
+  margin-bottom: 1vh;
+  color: var(--wild-sand);
+}
+
+.footer-coluna-links a {
+  font-size: 0.95vw;
+  text-decoration: none;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.footer-coluna-links a:hover {
+  opacity: 1;
+}
+
+.footer-contato-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+}
+
+.icone-email {
+  opacity: 0.4;
+  font-size: 2vw;
+}
+
+.footer-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 3vh;
+  font-size: 0.85vw;
+}
+
+.footer-rodape p {
+  opacity: 0.3;
+}
+
+.footer-credito {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   8. AREA MOBILE
+   ========================================================================== */
+
+@media (orientation: portrait) {
+
+  .secao-principal {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    margin: 14vh auto 6vh;
+    gap: 5vh;
+  }
+
+  .foto-dono {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    width: 100%;
+    max-width: 340px;
+    justify-self: center;
+    margin: 0 auto;
+  }
+
+  .foto-dono img {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .nome-funcao {
+    right: 50%;
+    transform: translateX(50%);
+    width: 85%;
+    min-width: 0;
+    text-align: center;
+    padding: 14px;
+  }
+
+  .nome-funcao p {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .nome-funcao h4 {
+    font-size: 15px;
+  }
+
+  .descricao {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .descricao h6 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .descricao h1 {
+    font-size: 36px;
+    margin-bottom: 28px;
+  }
+
+  .textos {
+    gap: 18px;
+    font-size: 16px;
+    text-align: left;
+    line-height: 1.8;
+  }
+
+  .historico {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .slot {
+    padding: 24px;
+  }
+
+  .slot h5 {
+    font-size: 34px;
+  }
+
+  .slot p {
+    font-size: 15px;
+  }
+
+  .container-botao-footer {
+    margin: 6vh 0;
+    padding: 0 5vw;
+  }
+
+  .contato {
+    width: 100%;
+    justify-content: center;
+    font-size: 17px;
+    padding: 18px;
+  }
+
+  .contato img {
+    width: 18px;
+  }
+
+  .footer {
+    padding: 6vh 6vw 4vh;
+    margin-top: 10vh;
+  }
+
+  .footer-principal {
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+
+  .footer-coluna-logo {
+    max-width: 100%;
+  }
+
+  .footer-logo {
+    font-size: 28px;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .footer-logo img {
+    height: 42px;
+  }
+
+  .footer-descricao {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .footer-coluna-links {
+    gap: 14px;
+  }
+
+  .footer-coluna-links h4 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .footer-coluna-links a {
+    font-size: 16px;
+  }
+
+  .footer-contato-item {
+    gap: 10px;
+  }
+
+  .icone-email {
+    font-size: 22px;
+  }
+
+  .footer-rodape {
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 30px;
+  }
+}

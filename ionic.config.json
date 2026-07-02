@@ -1,0 +1,7 @@
+{
+  "name": "O-Rose App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

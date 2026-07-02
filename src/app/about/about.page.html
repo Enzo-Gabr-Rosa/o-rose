@@ -1,0 +1,112 @@
+<ion-content [fullscreen]="true">
+
+  <div class="nav-bar">
+    <div class="logo-nav">
+      <img src="../../assets/imgs/Logo 250px.png" height="36px">
+      <div class="nome-logo">O-<span class="efeito-logo">Rose</span></div>
+    </div>
+    
+    <div class="menu-nav desktop-only">
+      <a (click)="goToHome()" class="link">Início</a>
+      <a (click)="goToAbout()" class="link ativo">Sobre</a>
+      <a (click)="goToContact()" class="link">Contato</a>
+    </div>
+    
+    <div class="desktop-only">
+      <a (click)="goToContact()" class="link-orcamento">Orçamento</a>
+    </div>
+
+    <button class="botao-menu-mobile mobile-only" (click)="alternarMenu()">
+      <ion-icon [name]="menuAberto ? 'close-outline' : 'menu-outline'"></ion-icon>
+    </button>
+  </div>
+
+  <!-- CAIXA SUSPENSA MOBILE (MOVIDA PARA FORA DA NAVBAR) -->
+  <div class="menu-suspenso-mobile" [class.aberto]="menuAberto">
+          
+    <div class="links-menu-suspenso">
+      <a (click)="navegarEFechar('home')">Início</a>
+      <a (click)="navegarEFechar('about')" class="ativo">Sobre</a>
+      <a (click)="navegarEFechar('contact')">Contato</a>
+    </div>
+  </div>
+
+  <div class="secao-principal">
+
+    <div class="foto-dono">
+      <img src="../../assets/imgs/Fundador da O-Rose.png" alt="Foto do dono">
+      <div class="nome-funcao">
+        <p>FUNDADOR & DEV</p>
+        <h4>Enzo Gabriel Rosa</h4>
+      </div>
+    </div>
+
+    <div class="descricao">
+      <h6>SOBRE O FUNDADOR</h6>
+      <h1>Código com <span class="efeito-gradiente">proprósito</span>.</h1>
+
+      <div class="textos">
+        <p>A O-Rose nasceu de uma convicção simples: desenvolver sistemas e ampliar para otimizar e ampliar o seu
+          negócio.
+          Cada empresa deve ter a oportunidade de crescer, e a O-Rose a auxília com ajuda da tecnologia web. </p>
+        <p>Sou Enzo Gabriel Rosa, desenvolvedor full-stack focado em TypeScript,
+          arquitetura limpa e animações que dão alma às interfaces.
+          Trabalho com, Ionic e ferramentas modernas para entregar produtos digitais que escalam e encantam.</p>
+        <p>Antes de fundar a O-Rose, estudei e desenvolvi pequenos projetos para testar minhas capacidades e desenvolver
+          minhas técnicas, cada habilidade direcionada a otimização e ampliação de seus objetivos</p>
+      </div>
+
+      <div class="historico">
+        <div class="slot tecs">
+          <h5 class="efeito-gradiente">24/7</h5>
+          <p>Pós-entrega</p>
+        </div>
+        <div class="slot experiencia">
+          <h5 class="efeito-gradiente">3</h5>
+          <p>Anos de estudos</p>
+        </div>
+        <div class="slot design">
+          <h5 class="efeito-gradiente">100%</h5>
+          <p>Alta performance</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-botao-footer">
+    <button (click)="goToContact()" class="contato">Conversar com Enzo <img src="../../assets/imgs/seta.svg" alt="seta"></button>
+  </div>
+
+
+  <footer class="footer">
+    <div class="footer-principal">
+      <div class="footer-coluna-logo">
+        <div class="footer-logo">
+          <img src="../../assets/imgs/Logo 250px.png" alt="Logo">
+          <div class="nome-logo">O-<span class="efeito-logo">Rose</span></div>
+        </div>
+        <p class="footer-descricao">Desenvolvimento web sob medida. Sistemas, sites e aplicações que automatizam, fortalecem e impulsionam.</p>
+      </div>
+
+      <div class="footer-coluna-links">
+        <h4>Navegação</h4>
+        <a href="">Início</a>
+        <a href="">Sobre</a>
+        <a href="">Contato</a>
+      </div>
+
+      <div class="footer-coluna-links">
+        <h4>Contato</h4>
+        <div class="footer-contato-item">
+          <span class="icone-email">✉</span>
+          <a href="mailto:orose.tech@gmail.com">orose.tech@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-rodape">
+      <p>© 2026 O-Rose. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</ion-content>

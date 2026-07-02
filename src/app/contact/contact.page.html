@@ -1,0 +1,188 @@
+<ion-content [fullscreen]="true">
+
+<div class="nav-bar">
+    <div class="logo-nav">
+      <img src="../../assets/imgs/Logo 250px.png" height="36px">
+      <div class="nome-logo">O-<span class="efeito-logo">Rose</span></div>
+    </div>
+    
+    <div class="menu-nav desktop-only">
+      <a (click)="goToHome()" class="link">Início</a>
+      <a (click)="goToAbout()" class="link">Sobre</a>
+      <a (click)="goToContact()" class="link ativo">Contato</a>
+    </div>
+    
+    <div class="desktop-only">
+      <a (click)="goToContact()" class="link-orcamento">Orçamento</a>
+    </div>
+
+    <button class="botao-menu-mobile mobile-only" (click)="alternarMenu()">
+      <ion-icon [name]="menuAberto ? 'close-outline' : 'menu-outline'"></ion-icon>
+    </button>
+  </div>
+
+  <!-- CAIXA SUSPENSA MOBILE (MOVIDA PARA FORA DA NAVBAR) -->
+  <div class="menu-suspenso-mobile" [class.aberto]="menuAberto">
+          
+    <div class="links-menu-suspenso">
+      <a (click)="navegarEFechar('home')">Início</a>
+      <a (click)="navegarEFechar('about')">Sobre</a>
+      <a (click)="navegarEFechar('contact')" class="ativo">Contato</a>
+    </div>
+  </div>
+
+  <div class="secao-contato">
+
+    <div class="contato-esquerda">
+      <h6 class="subtitulo-contato">VAMOS CONVERSAR</h6>
+      <h1 class="titulo-contato">Conte sobre o seu <span class="efeito-gradiente-projeto">projeto</span>.</h1>
+      <p class="descricao-contato">Responda em poucos campos e receba uma proposta personalizada em até 48 hours.</p>
+
+      <div class="lista-cards-contato">
+
+        <div class="card-info-contato" (click)="goToEmail()">
+          <div class="badge-icone icone-roxo">
+            <ion-icon name="mail-outline"></ion-icon>
+          </div>
+          
+          <div class="card-info-textos">
+            <span>Email direto</span>
+            <!-- CORRIGIDO: alterado de mail: para mailto: para funcionar no clique direto -->
+              <p>orose.tech@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="card-info-contato" (click)="goToWhatsapp()">
+          <div class="badge-icone icone-azul">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+          </div>
+          <div class="card-info-textos">
+            <span>Chat rápido</span>
+            <p>WhatsApp</p>
+          </div>
+        </div>
+
+        <div class="card-info-contato" style="cursor: default;">
+          <div class="badge-icone icone-cinza">
+            <ion-icon name="sparkles-outline"></ion-icon>
+          </div>
+          <div class="card-info-textos">
+            <span>Resposta</span>
+            <p>Em até 48h úteis</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contato-direita">
+      <div class="formulario-projeto">
+        
+        <!-- CORREÇÃO AQUI: Adicionado o (ngSubmit)="enviarFormulario()" para conectar com o clique do botão -->
+        <form [formGroup]="formularioProjeto" (ngSubmit)="enviarFormulario()">
+
+          <div class="linha-formulario">
+            <div class="grupo-input">
+              <label>Nome<span class="efeito-azul">*</span></label>
+              <input type="text" formControlName="nome" placeholder="Como devemos te chamar?">
+              
+              <p class="erro-mensagem" *ngIf="formularioProjeto.get('nome')?.touched && formularioProjeto.get('nome')?.invalid">
+                O nome é obrigatório.
+              </p>
+            </div>
+
+            <div class="grupo-input">
+              <label>Empresa</label>
+              <input type="text" formControlName="empresa" placeholder="Opcional">
+            </div>
+          </div>
+
+          <div class="grupo-input">
+            <label>Email<span class="efeito-azul">*</span></label>
+            <input type="email" formControlName="email" placeholder="voce@empresa.com">
+            
+            <p class="erro-mensagem" *ngIf="formularioProjeto.get('email')?.touched && formularioProjeto.get('email')?.invalid">
+              Insira um e-mail válido para contato.
+            </p>
+          </div>
+
+          <div class="grupo-selecao">
+            <label>Tipo de projeto<span class="efeito-azul">*</span></label>
+            <div class="opcoes-tags">
+              <button type="button" class="tag-opcao"
+                [class.ativa]="formularioProjeto.get('tipoProjeto')?.value === 'Site institucional'"
+                (click)="formularioProjeto.get('tipoProjeto')?.setValue('Site institucional')">
+                Site institucional
+              </button>
+
+              <button type="button" class="tag-opcao"
+                [class.ativa]="formularioProjeto.get('tipoProjeto')?.value === 'Comercio'"
+                (click)="formularioProjeto.get('tipoProjeto')?.setValue('Comercio')">
+                Comércio
+              </button>
+
+              <button type="button" class="tag-opcao"
+                [class.ativa]="formularioProjeto.get('tipoProjeto')?.value === 'Aplicativo mobile'"
+                (click)="formularioProjeto.get('tipoProjeto')?.setValue('Aplicativo mobile')">
+                Aplicativo mobile
+              </button>
+
+              <button type="button" class="tag-opcao"
+                [class.ativa]="formularioProjeto.get('tipoProjeto')?.value === 'Outro'"
+                (click)="formularioProjeto.get('tipoProjeto')?.setValue('Outro')">
+                Outro
+              </button>
+            </div>
+          </div>
+
+          <div class="grupo-input">
+            <label>Conte sobre o projeto<span class="efeito-azul">*</span></label>
+            <textarea formControlName="conteudoProjeto" placeholder="Objetivos, prazo, referências..."></textarea>
+            
+            <p class="erro-mensagem" *ngIf="formularioProjeto.get('conteudoProjeto')?.touched && formularioProjeto.get('conteudoProjeto')?.invalid">
+              Por favor, descreva brevemente a sua ideia.
+            </p>
+          </div>
+
+          <button type="submit" class="botao-enviar" [disabled]="formularioProjeto.invalid">
+            Enviar solicitação <img src="../../assets/imgs/seta.svg" alt="Seta">
+          </button>
+          
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-principal">
+      <div class="footer-coluna-logo">
+        <div class="footer-logo">
+          <img src="../../assets/imgs/Logo 250px.png" alt="Logo">
+          <div class="nome-logo">O-<span class="efeito-logo">Rose</span></div>
+        </div>
+        <p class="footer-descricao">Desenvolvimento web sob medida. Sistemas, sites e aplicações que automatizam, fortalecem e impulsionam.</p>
+      </div>
+
+      <div class="footer-coluna-links">
+        <h4>Navegação</h4>
+        <a href="">Início</a>
+        <a href="">Sobre</a>
+        <a href="">Contato</a>
+      </div>
+
+      <div class="footer-coluna-links">
+        <h4>Contato</h4>
+        <div class="footer-contato-item">
+          <span class="icone-email">✉</span>
+          <a href="mailto:orose.tech@gmail.com">orose.tech@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-rodape">
+      <p>© 2026 O-Rose. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</ion-content>

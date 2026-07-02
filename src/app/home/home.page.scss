@@ -1,0 +1,834 @@
+  /* ==========================================================================
+    1. CONFIGURAÇÕES GERAIS E RESETS
+    ========================================================================== */
+
+  * {
+    color: var(--wild-sand);
+    font-family: "Inter", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  ion-content {
+    --background: #0A0A0A;
+    --background: linear-gradient(20deg, rgba(5, 5, 5, 1) 0%, rgba(5, 5, 5, 1) 70%, rgba(37, 91, 125, 0.3) 110%);
+  }
+
+  /* ==========================================================================
+    2. BARRA DE NAVEGAÇÃO (NAVBAR ORIGINAL)
+    ========================================================================== */
+
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 3vh;
+    height: 8vh;
+    padding: 2vw;
+
+    width: 82vw;
+    min-width: 1200px;
+    margin: 3vh auto;
+
+    border: 2px var(--cod-gray) solid;
+    border-radius: 100vw;
+    background: rgba(var(--cod-gray-rgb), 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .logo-nav {
+    font-weight: bold;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+  }
+
+  .menu-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2vw;
+  }
+
+  .menu-nav a {
+    cursor: pointer;
+  }
+
+  .link {
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .link.ativo {
+    opacity: 1;
+  }
+
+  .link-orcamento {
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.6vh 1vw;
+    border-radius: 33554400px;
+    background: linear-gradient(107deg, var(--christalle) 0%, var(--dodger-blue) 100%);
+  }
+
+  /* ==========================================================================
+    ELEMENTOS DE SUPORTE AO MOBILE (CONVENÇÃO DE FLUXO GLOBAL)
+    ========================================================================== */
+
+  .mobile-only {
+    display: none !important;
+  }
+
+  .botao-menu-mobile {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .botao-menu-mobile ion-icon {
+    font-size: 28px;
+    color: var(--wild-sand);
+  }
+
+  .menu-suspenso-mobile {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .menu-suspenso-mobile.aberto {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* ==========================================================================
+    REGRAS ADAPTATIVAS PARA RETRATO (PORTRAIT)
+    ========================================================================== */
+
+  @media (orientation: portrait) {
+    .desktop-only {
+      display: none !important;
+    }
+
+    .mobile-only {
+      display: flex !important;
+    }
+
+    .nav-bar {
+      width: 90vw;
+      min-width: 0;
+      margin: 2vh auto;
+      height: 60px;
+      padding: 0 16px;
+      position: fixed;
+      overflow: visible !important;
+    }
+
+    .menu-suspenso-mobile {
+      position: fixed;
+      top: 10vh;
+      left: 5vw;
+      width: 90vw;
+      z-index: 200;
+
+      border: 2px var(--cod-gray) solid;
+      border-radius: 24px;
+      background: rgba(var(--cod-gray-rgb), 0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(12px);
+
+      padding: 24px 28px;
+    }
+
+    .links-menu-suspenso {
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .links-menu-suspenso a {
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      opacity: 0.5;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+      color: var(--wild-sand);
+    }
+
+    .links-menu-suspenso a.ativo {
+      opacity: 1;
+      font-weight: 600;
+    }
+  }
+
+
+  /* ==========================================================================
+    3. SEÇÃO HEROI (ESTRUTURA PRINCIPAL)
+    ========================================================================== */
+
+  .secao-heroi {
+    margin: 20vh 12vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+  }
+
+  /* ==========================================================================
+    4. CONTEÚDO DA ESQUERDA (TEXTOS E BOTÕES)
+    ========================================================================== */
+
+  #parte-esq {
+    width: 50vw;
+  }
+
+  .desc-especial {
+    display: flex;
+    align-items: center;
+    padding: 2.5vh 1.5vw;
+    border-radius: 9999999px;
+    width: 24vw;
+    height: 3vh;
+    gap: 1vw;
+    background: rgba(var(--cod-gray-rgb), 0.6);
+  }
+
+  .desc-especial p {
+    font-size: 1.25vw;
+  }
+
+  .bola-azul {
+    width: 0.6vw;
+    height: 0.6vw;
+    border-radius: 100%;
+    background-color: var(--dodger-blue);
+  }
+
+  #parte-esq h1 {
+    font-size: 4.3vw;
+    font-weight: bold;
+  }
+
+  #parte-esq span {
+    background-image: linear-gradient(135deg, var(--christalle) 10%, var(--dodger-blue) 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  #parte-esq h3 {
+    margin: 2vh 2vw 4vh 0;
+    text-align: justify;
+    font-size: 1.2vw;
+    opacity: 0.4;
+  }
+
+  .botoes-hero {
+    display: flex;
+    gap: 2.5vw;
+    margin: 0 1vw;
+  }
+
+  .botoes-hero .orcamento {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.3vw;
+    padding: 1.3vh 1vw;
+    border-radius: 9999999px;
+    background: linear-gradient(135deg, var(--christalle) 10%, var(--dodger-blue) 110%);
+    border: none;
+    cursor: pointer;
+  }
+
+  .botoes-hero .orcamento img {
+    display: block;
+    width: 1vw;
+    height: 2vh;
+  }
+
+  .botoes-hero .sobre {
+    background: rgba(var(--cod-gray-rgb), 0.6);
+    border: 2px var(--cod-gray) solid;
+    font-size: 1.3vw;
+    padding: 1.3vh 1vw;
+    border-radius: 9999999px;
+    cursor: pointer;
+  }
+
+  /* ==========================================================================
+    5. CONTEÚDO DA DIREITA (IMAGEM E CARD FLUTUANTE)
+    ========================================================================== */
+
+  #parte-dir {
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+  }
+
+  .wrapper-imagem {
+    position: relative;
+    width: 100%;
+    max-width: 490px;
+  }
+
+  .wrapper-imagem img {
+    border-radius: 24px;
+    width: 100%;
+    display: block;
+  }
+
+  .principio {
+    position: absolute;
+    bottom: -2vh;
+    left: -40px;
+    background: rgba(15, 15, 15, 0.85);
+    backdrop-filter: blur(10px);
+    border: 2px var(--cod-gray) solid;
+    border-radius: 20px;
+    padding: 2vh 1.5vw;
+    width: 14vw;
+    z-index: 10;
+  }
+
+  .principio h5 {
+    font-size: 0.9vw;
+    opacity: 0.4;
+    margin-bottom: 0.5vh;
+  }
+
+  .principio p {
+    font-size: 1.2vw;
+    font-weight: 500;
+  }
+
+  /* ==========================================================================
+    6. SEÇÃO CAPACIDADES
+    ========================================================================== */
+
+  .capacidades {
+    margin: 20vh 12vw;
+  }
+
+  .cabecalho-capacidades h5 {
+    font-family: 'sans-serif';
+    font-size: 1vw;
+    letter-spacing: 2px;
+    color: var(--dodger-blue);
+    margin: 0.75vh 0vw;
+  }
+
+  .cabecalho-capacidades h1 {
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin: 0 0 6vh 0;
+  }
+
+  .listagem {
+    padding: 0 0 0 2vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vw;
+  }
+
+  .icone {
+    max-width: 48px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(15, 15, 15, 0.85);
+    border: 2px var(--cod-gray) solid;
+    border-radius: 12px;
+  }
+
+  .cap-1,
+  .cap-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7vh 0;
+    text-align: start;
+    justify-content: start;
+    padding: 4vh 4vw 4vh 2.5vw;
+    background: linear-gradient(45deg, rgba(var(--cod-gray-rgb), 0.1) 0%, rgba(var(--cod-gray-rgb), 0.1) 85%, rgba(37, 91, 125, 0.3) 100%);
+    border: 1px var(--cod-gray) solid;
+    border-radius: 12px;
+  }
+
+  .cap-1 h6,
+  .cap-4 h6 {
+    font-size: 0.7vw;
+    opacity: 0.6;
+  }
+
+  .cap-1 h3,
+  .cap-4 h3 {
+    font-weight: bold;
+  }
+
+  .cap-1 p,
+  .cap-4 p {
+    font-size: 0.9vw;
+    opacity: 0.8;
+  }
+
+  .cap-2,
+  .cap-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7vh 0;
+    text-align: start;
+    justify-content: start;
+    padding: 4vh 4vw 4vh 2.5vw;
+    background: linear-gradient(45deg, rgba(var(--cod-gray-rgb), 0.1) 0%, rgba(var(--cod-gray-rgb), 0.1) 85%, rgba(var(--christalle-rgb), 0.4) 100%);
+    border: 1px var(--cod-gray) solid;
+    border-radius: 12px;
+  }
+
+  .cap-2 h6,
+  .cap-3 h6 {
+    font-size: 0.7vw;
+    opacity: 0.6;
+  }
+
+  .cap-2 h3,
+  .cap-3 h3 {
+    font-weight: bold;
+  }
+
+  .cap-2 p,
+  .cap-3 p {
+    font-size: 0.9vw;
+    opacity: 0.8;
+  }
+
+  /* ==========================================================================
+    7. SEÇÃO IDEIA
+    ========================================================================== */
+
+  .ideia {
+    margin: 10vh auto;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3vh;
+    padding: 6vh 3vw;
+    text-align: center;
+    background: linear-gradient(107deg, rgba(var(--dodger-blue-rgb), 0.3) 0%, rgba(var(--cod-gray-rgb), 0.1) 90%);
+    border-radius: 32px;
+  }
+
+  .ideia h1 {
+    font-size: 3vw;
+    font-weight: bold;
+    max-width: 40vw;
+  }
+
+  .ideia p {
+    opacity: 0.75;
+    font-size: 1vw;
+    max-width: 40vw;
+  }
+
+  .ideia button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1vw;
+    padding: 1.3vh 2vw;
+    border-radius: 9999999px;
+    background: linear-gradient(135deg, var(--christalle) 10%, var(--dodger-blue) 110%);
+    border: none;
+    width: 100%;
+    max-width: 16vw;
+    cursor: pointer;
+  }
+
+  /* ==========================================================================
+    8. SEÇÃO FOOTER
+    ========================================================================== */
+
+  .footer {
+    width: 100%;
+    background-color: #050505;
+    padding: 8vh 12vw 4vh 12vw;
+    margin-top: 15vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .footer-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4vw;
+    padding-bottom: 6vh;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .footer-coluna-logo {
+    max-width: 25vw;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    font-weight: bold;
+    font-size: 1.8vw;
+    margin-bottom: 2vh;
+  }
+
+  .footer-logo img {
+    height: 36px;
+    width: auto;
+  }
+
+  .footer-descricao {
+    font-size: 0.95vw;
+    line-height: 1.6;
+    opacity: 0.4;
+  }
+
+  .footer-coluna-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+  }
+
+  .footer-coluna-links h4 {
+    font-size: 1vw;
+    font-weight: 600;
+    margin-bottom: 1vh;
+    color: var(--wild-sand);
+  }
+
+  .footer-coluna-links a {
+    font-size: 0.95vw;
+    text-decoration: none;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-coluna-links a:hover {
+    opacity: 1;
+  }
+
+  .footer-contato-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+  }
+
+  .icone-email {
+    opacity: 0.4;
+    font-size: 2vw;
+  }
+
+  .footer-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3vh;
+    font-size: 0.85vw;
+  }
+
+  .footer-rodape p {
+    opacity: 0.3;
+  }
+
+  .footer-credito {
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+    letter-spacing: 1px;
+  }
+
+  /* ==========================================================================
+    9. OTIMIZAÇÃO PARA DISPOSITIVOS MÓVEIS (RESPONSIVIDADE)
+    ========================================================================== */
+
+  @media (max-width: 1023px) {
+    #parte-dir {
+      display: none;
+    }
+
+    #parte-esq {
+      width: 100%;
+    }
+
+    .footer-principal {
+      flex-direction: column;
+      gap: 4vh;
+    }
+
+    .footer-coluna-logo {
+      max-width: 100%;
+    }
+
+    .footer-rodape {
+      flex-direction: column;
+      gap: 2vh;
+      text-align: center;
+    }
+  }
+
+  @media (orientation: portrait) {
+
+    .desktop-only {
+      display: none !important;
+    }
+
+    .mobile-only {
+      display: flex !important;
+    }
+
+    .nav-bar {
+      width: 90vw;
+      min-width: 0;
+      margin: 2vh auto;
+      height: 60px;
+      padding: 0 16px;
+      position: fixed;
+      overflow: visible !important;
+    }
+
+    .menu-suspenso-mobile {
+      position: fixed;
+      top: 10vh;
+      left: 5vw;
+      width: 90vw;
+      z-index: 200;
+
+      border: 2px var(--cod-gray) solid;
+      border-radius: 24px;
+      background: rgba(var(--cod-gray-rgb), 0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(12px);
+
+      padding: 24px 28px;
+    }
+
+    .links-menu-suspenso {
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .links-menu-suspenso a {
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      opacity: 0.5;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+      color: var(--wild-sand);
+    }
+
+    .links-menu-suspenso a.ativo {
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    .secao-heroi {
+      margin: 15vh 6vw 8vh 6vw;
+      flex-direction: column;
+      gap: 6vh;
+      text-align: center;
+    }
+
+    #parte-esq {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .desc-especial {
+      width: auto;
+      padding: 1.5vh 4vw;
+      margin-bottom: 2vh;
+    }
+
+    .desc-especial p {
+      font-size: 3.5vw;
+    }
+
+    .bola-azul {
+      width: 2vw;
+      height: 2vw;
+    }
+
+    #parte-esq h1 {
+      font-size: 8vw;
+    }
+
+    #parte-esq h3 {
+      font-size: 4vw;
+      text-align: center;
+      margin: 3vh 0;
+    }
+
+    .botoes-hero {
+      width: 100%;
+      flex-direction: column;
+      gap: 2vh;
+      margin: 0;
+    }
+
+    .botoes-hero .orcamento,
+    .botoes-hero .sobre {
+      width: 100%;
+      font-size: 4vw;
+      padding: 2vh 0;
+    }
+
+    .botoes-hero .orcamento img {
+      width: 3vw;
+      height: auto;
+    }
+
+    #parte-dir {
+      width: 100%;
+    }
+
+    .wrapper-imagem {
+      max-width: 100%;
+    }
+
+    .principio {
+      width: 60vw;
+      left: 5vw;
+      bottom: -3vh;
+      padding: 2vh 4vw;
+    }
+
+    .principio h5 {
+      font-size: 3vw;
+    }
+
+    .principio p {
+      font-size: 3.5vw;
+    }
+
+    .capacidades {
+      margin: 12vh 6vw;
+    }
+
+    .cabecalho-capacidades h5 {
+      font-size: 3.5vw;
+    }
+
+    .cabecalho-capacidades h1 {
+      font-size: 6.5vw;
+      margin-bottom: 4vh;
+    }
+
+    .listagem {
+      padding: 0;
+      grid-template-columns: 1fr;
+      gap: 3vh;
+    }
+
+    .cap-1,
+    .cap-2,
+    .cap-3,
+    .cap-4 {
+      padding: 4vh 5vw;
+    }
+
+    .cap-1 h6,
+    .cap-2 h6,
+    .cap-3 h6,
+    .cap-4 h6 {
+      font-size: 3vw;
+    }
+
+    .cap-1 p,
+    .cap-2 p,
+    .cap-3 p,
+    .cap-4 p {
+      font-size: 3.8vw;
+    }
+
+    .ideia {
+      width: 88vw;
+      padding: 6vh 6vw;
+    }
+
+    .ideia h1 {
+      font-size: 7vw;
+      max-width: 100%;
+    }
+
+    .ideia p {
+      font-size: 3.8vw;
+      max-width: 100%;
+    }
+
+    .ideia button {
+      max-width: 100%;
+      font-size: 4vw;
+      padding: 2vh 0;
+    }
+
+    .footer {
+      padding: 6vh 6vw 4vh 6vw;
+    }
+
+    .footer-principal {
+      flex-direction: column;
+      gap: 4vh;
+    }
+
+    .footer-coluna-logo {
+      max-width: 100%;
+    }
+
+    .footer-logo {
+      font-size: 6vw;
+    }
+
+    .footer-descricao {
+      font-size: 3.8vw;
+    }
+
+    .footer-coluna-links h4 {
+      font-size: 4.5vw;
+    }
+
+    .footer-coluna-links a {
+      font-size: 3.8vw;
+    }
+
+    .footer-rodape {
+      flex-direction: column;
+      gap: 2vh;
+      text-align: center;
+      font-size: 3.2vw;
+    }
+
+  }

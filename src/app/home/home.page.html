@@ -1,0 +1,141 @@
+<ion-content [fullscreen]="true">
+  <div class="nav-bar">
+    <div class="logo-nav">
+      <img src="../../assets/imgs/Logo 250px.png" height="36px">
+      <div class="nome-logo">O-<span class="efeito-logo">Rose</span></div>
+    </div>
+    
+    <div class="menu-nav desktop-only">
+      <a (click)="goToHome()" class="link ativo">Início</a>
+      <a (click)="goToAbout()" class="link">Sobre</a>
+      <a (click)="goToContact()" class="link">Contato</a>
+    </div>
+    
+    <div class="desktop-only">
+      <a (click)="goToContact()" class="link-orcamento">Orçamento</a>
+    </div>
+
+    <button class="botao-menu-mobile mobile-only" (click)="alternarMenu()">
+      <ion-icon [name]="menuAberto ? 'close-outline' : 'menu-outline'"></ion-icon>
+    </button>
+  </div>
+
+  <!-- CAIXA SUSPENSA MOBILE (MOVIDA PARA FORA DA NAVBAR) -->
+  <div class="menu-suspenso-mobile" [class.aberto]="menuAberto">
+          
+    <div class="links-menu-suspenso">
+      <a (click)="navegarEFechar('home')" class="ativo">Início</a>
+      <a (click)="navegarEFechar('about')">Sobre</a>
+      <a (click)="navegarEFechar('contact')">Contato</a>
+    </div>
+  </div>
+
+
+
+  <div class="secao-heroi">
+
+    <div id="parte-esq">
+      <div class="desc-especial">
+        <div class="bola-azul"></div>
+        <p>Estúdio de desenvolvimento web</p>
+      </div>
+      <h1>Desenvolvimento Web <span>Sob Medida</span>.</h1>
+      <h3>Criamos sites, sistemas e aplicações web personalizados para
+        automatizar processos, fortalecer sua marca e impulsionar seus
+        resultados.</h3>
+
+      <div class="botoes-hero">
+        <button class="orcamento" (click)="goToContact()">Solicitar orçamento <img src="../../assets/imgs/seta.svg" alt=""></button>
+        <button class="sobre" (click)="goToAbout( )" >Ler sobre</button>
+      </div>
+    </div>
+
+    <div id="parte-dir">
+      <div class="wrapper-imagem">
+        <img src="../../assets/imgs/Rosa-Neon.jpg" alt="flor-neon">
+
+        <div class="principio">
+          <h5>// principio.001</h5>
+          <p>Movimento com intenção</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="capacidades">
+    <div class="cabecalho-capacidades">
+      <h5>NOSSOS PRINCIPIOS</h5>
+      <h1>O que move cada linha de código.</h1>
+    </div>
+
+      <div class="listagem">
+            <div class="cap-1">
+        <div class="icone"><img src="../../assets/imgs/estrela.png" alt="estrela"></div>
+        <h6>01</h6>
+        <h3>Animações Vívidas</h3>
+        <p>Movimento intencional com AnimeJS — interfaces que respiram e
+        respondem.</p>
+            </div>
+        
+            <div class="cap-2">
+        <div class="icone"><img src="../../assets/imgs/prompt.png" alt="prompt de comando"></div>
+        <h6>02</h6>
+        <h3>TypeScript Robusto</h3>
+        <p>Sistemas escaláveis tipados de ponta a ponta, com qualidade
+        industrial.</p>
+            </div>
+            <div class="cap-3">
+        <div class="icone"><img src="../../assets/imgs/pilha.png" alt="Pilha"></div>
+        <h6>03</h6>
+        <h3>Angular & Ionic</h3>
+        <p>Stack moderna para web e mobile, performance nativa em qualquer
+        dispositivo.</p>
+            </div>
+            <div class="cap-4">
+        <div class="icone"><img src="../../assets/imgs/paint.png" alt="Pintura"></div>
+        <h6>04</h6>
+        <h3>Design Sob Medida</h3>
+        <p>Cada pixel pensado para sua marca. Sem templates, sem genérico.</p>
+            </div>
+      </div>
+
+  </div>
+
+  <div class="ideia">
+    <h1>Tem uma ideia em mente?</h1>
+    <p>Vamos transformar o seu projeto em uma experiência digital que vende, encanta e funciona.</p>
+    <button (click)="goToContact()" >Iniciar conversa <img src="../../assets/imgs/seta.svg" alt="Seta"></button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-principal">
+      <div class="footer-coluna-logo">
+        <div class="footer-logo">
+          <img src="../../assets/imgs/Logo 250px.png" alt="Logo">
+          <div class="nome-logo">O-<span class="efeito-logo">Rose</span></div>
+        </div>
+        <p class="footer-descricao">Desenvolvimento web sob medida. Sistemas, sites e aplicações que automatizam, fortalecem e impulsionam.</p>
+      </div>
+
+      <div class="footer-coluna-links">
+        <h4>Navegação</h4>
+        <a href="">Início</a>
+        <a href="">Sobre</a>
+        <a href="">Contato</a>
+      </div>
+
+      <div class="footer-coluna-links">
+        <h4>Contato</h4>
+        <div class="footer-contato-item">
+          <span class="icone-email">✉</span>
+          <a href="mailto:orose.tech@gmail.com">orose.tech@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-rodape">
+      <p>© 2026 O-Rose. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</ion-content>
